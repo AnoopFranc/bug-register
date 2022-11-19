@@ -1,0 +1,2 @@
+# bug-register
+Bugs logger
