@@ -1,8 +1,14 @@
-import * as express from "express";
 import * as dotenv from "dotenv";
+import { InversifyExpressServer } from "inversify-express-utils";
+import container from "./src/config/container";
 dotenv.config();
 
-const app = express();
+// set up bindings
+// container.bind<FooService>("FooService").to(FooService);
+
+// create server
+let server = new InversifyExpressServer(container);
+let app = server.build();
 
 /**
  * Setup listener port
