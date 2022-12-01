@@ -1,7 +1,9 @@
-import { IProjectRepository } from "../interface/IProjectRepository";
+import { injectable } from "inversify";
+import { IProjectRepository } from "../interface/repository";
 import { Project } from "../model/project";
 
 
+@injectable()
 export class ProjectRepository implements IProjectRepository {
     Create(entity: Project): Promise<Project> {
         throw new Error("Method not implemented.");

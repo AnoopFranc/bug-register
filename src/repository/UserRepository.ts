@@ -1,6 +1,8 @@
-import { IUserRepository } from "../interface/IUserRepository";
+import { injectable } from "inversify";
+import { IUserRepository } from "../interface/repository";
 import { ProjectMember } from "../model/projectMember";
 
+@injectable()
 export class UserRepository implements IUserRepository {
     Create(entity: ProjectMember): Promise<ProjectMember> {
         throw new Error("Method not implemented.");

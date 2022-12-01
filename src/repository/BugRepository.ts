@@ -1,7 +1,9 @@
-import { IBugRepository } from "../interface/IBugRepository";
+import { injectable } from "inversify";
+import { IBugRowRepository } from "../interface/repository";
 import { Bug } from "../model/bug";
 
-export class BugRepository implements IBugRepository{
+@injectable()
+export class BugRepository implements IBugRowRepository{
     Create(entity: Bug): Promise<Bug> {
         throw new Error("Method not implemented.");
     }

@@ -1,6 +1,8 @@
-import { IBugColumRepository } from "../interface/IBugColumRepository";
+import { injectable } from "inversify";
+import { IBugColumRepository } from "../interface/repository/IBugColumRepository";
 import { BugColumn } from "../model/bugColumn";
 
+@injectable()
 export class BugColumRepository implements IBugColumRepository {
     Create(entity: BugColumn): Promise<BugColumn> {
         throw new Error("Method not implemented.");

@@ -2,10 +2,17 @@ import "reflect-metadata";
 
 import { Container } from "inversify";
 import { TYPES } from "../core/type.core";
-import { IBugColumRepository, IBugRepository, IBugRowRepository, IProjectInviteRepository, IProjectMemberRepository, IProjectRepository, IUserRepository } from "../interface";
+import { IBugColumRepository, IBugRepository, IBugRowRepository, IProjectInviteRepository, IProjectMemberRepository, IProjectRepository, IUserRepository } from "../interface/repository";
 import { BugColumRepository, BugRepository, BugRowRepository, ProjectInviteRepository, ProjectMemberRepository, ProjectRepository, UserRepository } from "../repository";
+import { IAuthService, IUserService } from "../interface/service";
+import { AuthService, UserService } from "../service";
+import { AuthController } from "../controller/AuthController";
+
 
 let container = new Container();
+
+container.bind(AuthController);
+container.bind<IAuthService>(TYPES.AuthService).to(AuthService);
 
 // container.bind(UserController).to(UserController);
 container.bind<IUserRepository>(TYPES.UserRepository).to(UserRepository);
@@ -13,7 +20,7 @@ container.bind<IUserRepository>(TYPES.UserRepository).to(UserRepository);
 
 // container.bind(UserController).to(UserController);
 container.bind<IProjectRepository>(TYPES.ProjectRepository).to(ProjectRepository);
-// container.bind<IUserService>(TYPES.UserService).to(UserService);
+container.bind<IUserService>(TYPES.UserService).to(UserService);
 
 // container.bind(UserController).to(UserController);
 container.bind<IProjectInviteRepository>(TYPES.ProjectInviteRepository).to(ProjectInviteRepository);

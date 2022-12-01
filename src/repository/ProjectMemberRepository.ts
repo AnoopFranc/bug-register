@@ -1,8 +1,10 @@
-import { IProjectMemberRepository } from "../interface/IProjectMemberRepository";
+import { injectable } from "inversify";
+import { IProjectMemberRepository } from "../interface/repository";
 import { Project } from "../model/project";
 import { ProjectMember } from "../model/projectMember";
 import { User } from "../model/user";
 
+@injectable()
 export class ProjectMemberRepository implements IProjectMemberRepository {
     getAllMembersInAProject(projectId: string): Promise<User[]> {
         throw new Error("Method not implemented.");
