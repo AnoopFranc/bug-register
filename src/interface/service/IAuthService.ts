@@ -1,6 +1,6 @@
 import { User } from "../../model/user";
 
 export interface IAuthService {
-  signIn(data: User): Promise<User>;
+  signInByGmail(credential: string): Promise<User>;
   helloWorld(): string;
 }

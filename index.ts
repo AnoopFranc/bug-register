@@ -1,4 +1,6 @@
-import 'reflect-metadata'
+import "reflect-metadata";
+import * as cors from "cors";
+import * as express from "express";
 import * as dotenv from "dotenv";
 import { InversifyExpressServer } from "inversify-express-utils";
 import container from "./src/config/container";
@@ -9,8 +11,17 @@ dotenv.config();
 
 // create server
 let server = new InversifyExpressServer(container);
+server.setConfig((app) => {
+  app.use(
+    cors({
+      origin: `*`,
+      credentials: true, //access-control-allow-credentials:true
+    })
+  );
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+});
 let app = server.build();
-
 /**
  * Setup listener port
  */

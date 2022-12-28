@@ -26,14 +26,15 @@ export class AuthController implements interfaces.Controller {
       res.status(400).json(error);
     }
   }
-  @httpPost("/signin/gmail")
+  @httpPost("/gmail")
   public async signInByGmail(
     @request() req: express.Request,
     @response() res: express.Response
   ) {
     try {
-      const post = this.authService.helloWorld();
-      res.status(200).json(post);
+      const credential = req.body.credential;
+      const response = await this.authService.signInByGmail(credential);
+      res.status(200).json(response);
     } catch (error) {
       res.status(400).json(error);
     }
